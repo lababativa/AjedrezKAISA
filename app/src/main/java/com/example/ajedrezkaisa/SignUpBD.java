@@ -21,7 +21,7 @@ public class SignUpBD extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLA_REGISTRO);  <- ME SALE ERROR EL "
+        //sqLiteDatabase.execSQL("DROP TABLE IF EXISTS "+TABLA_REGISTRO);  <- ME SALE ERROR EN LAS COMILLAS DOBLES
         sqLiteDatabase.execSQL(TABLA_REGISTRO);
     }
 
