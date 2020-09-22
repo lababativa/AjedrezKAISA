@@ -25,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         LogoImageView = findViewById(R.id.LogoImageView);
         bienvenidoLabel = findViewById(R.id.bienvenidoLabel);
         continuarLabel = findViewById(R.id.continuarLabel);
