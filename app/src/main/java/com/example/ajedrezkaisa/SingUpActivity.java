@@ -2,70 +2,87 @@ package com.example.ajedrezkaisa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputLayout;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class SingUpActivity extends AppCompatActivity {
 
-    TextView nuevoUsuario, bienvenidoLabel, continuarLabel;
-    ImageView SingUpImageView;
-    TextInputLayout correoTextField, contrasenaTextField;
-    MaterialButton inicioSesion;
+    EditText edtPrimer,edtsegundo,edtEd,edtCorre,edtPass;
+    Button btnRegistra;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
 
-        SingUpImageView = findViewById(R.id.SingUpImageView);
-        bienvenidoLabel = findViewById(R.id.bienvenidoLabel);
-        continuarLabel = findViewById(R.id.continuarLabel);
-        correoTextField = findViewById(R.id.correoTextField);
-        contrasenaTextField = findViewById(R.id.contrasenaTextField);
-        inicioSesion = findViewById(R.id.inicioSesion);
-        nuevoUsuario = findViewById(R.id.nuevoUsuario);
-
-        nuevoUsuario.setOnClickListener(new View.OnClickListener() {
+        edtPrimer = (EditText)findViewById(R.id.edtPrimerNombre);
+        edtsegundo = (EditText)findViewById(R.id.editSegundoNombre);
+        edtEd = (EditText)findViewById(R.id.edtEdad);
+        edtCorre = (EditText)findViewById(R.id.edtCorreo);
+        edtPass = (EditText)findViewById(R.id.edtPassword);
+        //evento Click Boton Registrar
+        btnRegistra = (Button)findViewById(R.id.btnIniciarSesion);
+        btnRegistra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                transitionBack();
+                ejecutarServivio("http://192.168.0.3/LoginMySQL/insertar_persona.php");
             }
         });
-    }
 
-    @Override
-    public void onBackPressed(){
-        transitionBack();
-    }
-
-    public void transitionBack(){
-        Intent intent = new Intent(SingUpActivity.this, LoginActivity.class);
-        Pair[] pairs=new Pair[7];
-        pairs[0] = new Pair<View, String>(SingUpImageView, "logoImageTrans");
-        pairs[1] = new Pair<View, String>(bienvenidoLabel, "textTrans");
-        pairs[2] = new Pair<View, String>(continuarLabel, "iniciaSesionTextTrans");
-        pairs[3] = new Pair<View, String>(correoTextField, "emailInputTextTrans");
-        pairs[4] = new Pair<View, String>(contrasenaTextField, "passwordInputTextTrans");
-        pairs[5] = new Pair<View, String>(inicioSesion, "buttonSingInTrans");
-        pairs[6] = new Pair<View, String>(nuevoUsuario, "newUserTrans");
-
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            ActivityOptions options= ActivityOptions.makeSceneTransitionAnimation(SingUpActivity.this, pairs);
-            startActivity(intent, options.toBundle());
-        }else{
-            startActivity(intent);
-            finish();
-        }
 
     }
+
+    private void ejecutarServivio(String Url){
+        StringRequest stringRequest;
+        stringRequest = new StringRequest(Request.Method.POST, Url,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //enviar a la otra actividad
+
+                        Toast.makeText(SingUpActivity.this, "Registrado Correctamente", Toast.LENGTH_SHORT).show();
+
+                        //Intent intent = new Intent (getApplicationContext(), MainActivity.class);
+                        //startActivityForResult(intent, 0);
+
+
+                    }
+
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(SingUpActivity.this,error.toString(), Toast.LENGTH_SHORT).show();
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> parametros = new HashMap<String, String>();
+                parametros.put("PrimerNombre",edtPrimer.getText().toString());
+                parametros.put("SegundoNombre",edtsegundo.getText().toString());
+                parametros.put("Edad",edtEd.getText().toString());
+                parametros.put("Correo",edtCorre.getText().toString());
+                parametros.put("Contrasena",edtPass.getText().toString());
+                return parametros;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(SingUpActivity.this);
+        requestQueue.add(stringRequest);
+    }
+
 
 }
