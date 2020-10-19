@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                         //enviar a la otra actividad
                         String respuesta = ""+response;
                         if(respuesta.trim().equalsIgnoreCase("Ingresaste Correctamente") ) {
-                            //enviar correo a la otra actividad
+                            //enviar correo a la otra actividadj
                             Correo = edtUsuario.getText().toString();
                             GlobalUsuario.Correo= Correo;
                             Intent intent = new Intent (getApplicationContext(), InicioActivity.class);
