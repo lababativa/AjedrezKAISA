@@ -6,6 +6,7 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
@@ -84,9 +85,9 @@ public class LoginActivity extends AppCompatActivity {
                 if(!usuario.isEmpty() && !password.isEmpty()) {
 
 
-                    ValidarUsuario("http://192.168.0.3/LoginMySQL/validar_usuario.php");
+                    ValidarUsuario("http://192.168.0.107/loginMySQL/validar_usuario.php");
                 }else{
-                    Toast.makeText(LoginActivity.this, "No se permiten campos vacios", Toast.LENGTH_SHORT).show();
+                   Toast.makeText(LoginActivity.this, "No se permiten campos vacios", Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -100,31 +101,31 @@ public class LoginActivity extends AppCompatActivity {
         stringRequest = new StringRequest(Request.Method.POST, URL,
                 new Response.Listener<String>() {
                     @Override
+
                     public void onResponse(String response) {
                         //enviar a la otra actividad
-
-                        if(!response.isEmpty() ) {
-                            Toast.makeText(LoginActivity.this, "Bienvenido", Toast.LENGTH_SHORT).show();
-
+                        String respuesta = ""+response;
+                        if(respuesta.trim().equalsIgnoreCase("Ingresaste Correctamente") ) {
                             //enviar correo a la otra actividad
                             Correo = edtUsuario.getText().toString();
                             GlobalUsuario.Correo= Correo;
-                            ///
-
-
                             Intent intent = new Intent (getApplicationContext(), InicioActivity.class);
                             startActivityForResult(intent, 0);
+                            Toast.makeText(LoginActivity.this, "Bienvenido"+respuesta, Toast.LENGTH_SHORT).show();
+
+                            ///
 
                         } else {
-                            Toast.makeText(LoginActivity.this, "Contraseña o Correo incorrecta", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Contraseña o Correo incorrecta"+respuesta, Toast.LENGTH_SHORT).show();
                         }
+
                     }
 
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 // En caso de tener algun error en la obtencion de los datos
-                Toast.makeText(LoginActivity.this, "Correo o Contraseña incorrecta", Toast.LENGTH_LONG).show();
+                Toast.makeText(LoginActivity.this, "ERROR DE CONEXION", Toast.LENGTH_LONG).show();
             }
         }){
             @Override
@@ -133,7 +134,7 @@ public class LoginActivity extends AppCompatActivity {
                 // En este metodo se hace el envio de valores de la aplicacion al servidor
                 Map<String, String> parametros = new HashMap<String, String>();
                 parametros.put("usuario", edtUsuario.getText().toString().trim());
-                parametros.put("password", edtPassword.getText().toString().trim());
+                parametros.put("password", edtPassword.getText().toString().trim() );
 
                 return parametros;
             }

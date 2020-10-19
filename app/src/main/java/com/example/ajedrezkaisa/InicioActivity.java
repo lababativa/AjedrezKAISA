@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,17 +29,27 @@ import java.util.Map;
 public class InicioActivity extends AppCompatActivity {
 
     TextView labelnombre;
-
+    Button btnPlay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
-
+        btnPlay = findViewById(R.id.btnPlay);
         //Creo instancia de la clase Global
        String email = GlobalUsuario.Correo.toString();
 
-        BuscarSession("http://192.168.0.3/loginMySQL/Buscar_usuario.php?Correo="+email);
+        BuscarSession("http://192.168.0.107/loginMySQL/Buscar_usuario.php?Correo="+email);
+
+
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), Juego_Activity.class);
+                startActivityForResult(intent, 0);
+            }
+
+        });
     }
     private void BuscarSession(String url) {
         labelnombre=(TextView)findViewById(R.id.lbPrimerNombre);
