@@ -28,7 +28,7 @@ public class Juego_Activity extends AppCompatActivity {
 
         WebSettings webSettings = browser.getSettings();
 
-        webSettings.setJavaScriptEnabled(true);//habilitar javascript
+        webSettings.setJavaScriptEnabled(true);//habilitar javascript--
         webSettings.setDomStorageEnabled(true);//almacenamiento
         webSettings.setLoadWithOverviewMode(true);//tamaño de la ventana
         WebSettings.getDefaultUserAgent(this);
