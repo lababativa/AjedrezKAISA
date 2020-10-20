@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    android:background="#90a4ae"
+    app:popupTheme="@style/AppTheme"
+    android:fitsSystemWindows="true"
+    tools:context=".MainActivity"
+    android:id="@+id/toolbarCustom">
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/logo_caissa"
+        android:layout_width="80dp"
+        android:layout_height="match_parent"
+        android:src="@drawable/logokaisa"
+        android:padding="5dp"
+        app:civ_border_color="#bdbdbd"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/MytittleToolBar"
+        android:text="CAISSA"
+        style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+        android:gravity="center_vertical"
+        />
+
+</androidx.appcompat.widget.Toolbar>

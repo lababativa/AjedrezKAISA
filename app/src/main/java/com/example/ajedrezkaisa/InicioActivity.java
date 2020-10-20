@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class InicioActivity extends AppCompatActivity {
 
-    TextView labelnombre;
+    TextView labelcorreo;
     Button btnPlay;
 
     @Override
@@ -52,7 +52,7 @@ public class InicioActivity extends AppCompatActivity {
         });
     }
     private void BuscarSession(String url) {
-        labelnombre=(TextView)findViewById(R.id.lbPrimerNombre);
+        labelcorreo=(TextView)findViewById(R.id.correoTextField);
         final JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(url, new Response.Listener<JSONArray>() {
             @Override
 
@@ -61,7 +61,7 @@ public class InicioActivity extends AppCompatActivity {
                 for (int i = 0; i < response.length(); i++) {
                     try {
                         JsonObject = response.getJSONObject(i);
-                        labelnombre.setText(JsonObject.getString("PrimerNombre"));
+                        labelcorreo.setText(JsonObject.getString("user"));
                     } catch (JSONException e) {
                         Toast.makeText(getApplicationContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
                     }

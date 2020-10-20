@@ -29,7 +29,7 @@ import java.util.Map;
 
 public class SingUpActivity extends AppCompatActivity {
 
-    EditText edtPrimer,edtsegundo,edtEd,edtCorre,edtPass;
+    EditText edtPrimer,edtsegundo,edtEd,edtCorre,edtPass,edtDoc;
     Button btnRegistra;
     boolean aux;
     RequestQueue requestQueue;
@@ -38,23 +38,25 @@ public class SingUpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sing_up);
 
-        edtPrimer = (EditText)findViewById(R.id.edtPrimerNombre);
-        edtsegundo = (EditText)findViewById(R.id.editSegundoNombre);
-        edtEd = (EditText)findViewById(R.id.edtEdad);
-        edtCorre = (EditText)findViewById(R.id.edtCorreo);
-        edtPass = (EditText)findViewById(R.id.edtPassword);
+        edtPrimer = (EditText)findViewById(R.id.nameTextField);
+        edtsegundo = (EditText)findViewById(R.id.lastnameTextField);
+        edtEd = (EditText)findViewById(R.id.edad);
+        edtDoc = (EditText)findViewById(R.id.docTextField);
+        edtCorre = (EditText)findViewById(R.id.correoTextField);
+        edtPass = (EditText)findViewById(R.id.contrasenaTextField);
         //evento Click Boton Registrar
-        btnRegistra = (Button)findViewById(R.id.btnIniciarSesion);
+        btnRegistra = (Button)findViewById(R.id.inicioSesion);
         btnRegistra.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String primero,segundo,edad,correo,password;
+                String primero,segundo,edad,correo,password,doc;
                 primero= edtPrimer.getText().toString();
                 segundo= edtsegundo.getText().toString();
                 edad= edtEd.getText().toString();
                 correo= edtCorre.getText().toString();
                 password= edtPass.getText().toString();
-                    if(primero.isEmpty() || segundo.isEmpty() || edad.isEmpty() || correo.isEmpty() || password.isEmpty()){
+                doc = edtDoc.getText().toString();
+                    if(primero.isEmpty() || segundo.isEmpty() || edad.isEmpty() || correo.isEmpty() || password.isEmpty() || doc.isEmpty()){
                         Toast.makeText(SingUpActivity.this, "No se permiten campos vacios", Toast.LENGTH_SHORT).show();
                     }else if(password.length() <7 || password.length() > 10){
                         Toast.makeText(SingUpActivity.this, "La contraseña debe contener de 7 a 10 caracteres", Toast.LENGTH_SHORT).show();
@@ -99,11 +101,12 @@ public class SingUpActivity extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> parametros = new HashMap<String, String>();
-                parametros.put("PrimerNombre",edtPrimer.getText().toString());
-                parametros.put("SegundoNombre",edtsegundo.getText().toString());
+                parametros.put("Nombre",edtPrimer.getText().toString());
+                parametros.put("Apellido",edtsegundo.getText().toString());
                 parametros.put("Edad",edtEd.getText().toString());
                 parametros.put("Correo",edtCorre.getText().toString());
                 parametros.put("Contrasena",edtPass.getText().toString());
+                parametros.put("Documento",edtDoc.getText().toString());
                 return parametros;
             }
         };

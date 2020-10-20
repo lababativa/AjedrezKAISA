@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="60dp"
         android:fontFamily="serif-monospace"
-        android:text="KAISA"
+        android:text="CAISSA"
         android:textColor="@color/colorKAISA"
         android:textSize="50sp"
         app:layout_constraintBottom_toBottomOf="parent"

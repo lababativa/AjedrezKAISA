@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-10-2020 a las 04:55:34
+-- Tiempo de generación: 20-10-2020 a las 23:54:26
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.10
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `bd_prueba`
+-- Base de datos: `bd_prueba (1)`
 --
 
 -- --------------------------------------------------------
@@ -161,28 +161,29 @@ CREATE TABLE `partida` (
 
 CREATE TABLE `persona` (
   `idPersona` int(11) NOT NULL,
-  `PrimerNombre` varchar(20) DEFAULT NULL,
-  `SegundoNombre` varchar(20) DEFAULT NULL,
+  `Nombre` varchar(20) DEFAULT NULL,
+  `Apellido` varchar(20) DEFAULT NULL,
   `Edad` int(11) DEFAULT NULL,
   `Correo` varchar(40) DEFAULT NULL,
-  `Contrasena` varchar(20) DEFAULT NULL
+  `Contrasena` varchar(20) DEFAULT NULL,
+  `Documento` int(10) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
-INSERT INTO `persona` (`idPersona`, `PrimerNombre`, `SegundoNombre`, `Edad`, `Correo`, `Contrasena`) VALUES
-(90, 'Ivan', 'Yesid', 2, 'ivann@gmail.com', '12345'),
-(99, 'Yesid', 'jose', 23, 'jj@gmail.com', '5678'),
-(100, 'juan', 'camilo', 23, 'ivan@gmail.com', '2345'),
-(101, 'yesid', 'camilo', 23, '2@gmail.com', '12345'),
-(103, 'ivan', 'yesid', 286, 'ivan@', 'ivan'),
-(105, 'fabio', 'andre', 25, 'a@gmail.com', '12345'),
-(108, 'Ivan', 'Yesid', 2, 'a@gmail.com', '12345'),
-(109, 'Ivan', 'Yesid', 2, 'aa@gmail.com', '12345'),
-(110, 'flota flota', 'rodriguez', 25, 'ff@gmail.com', '12345'),
-(113, 'felipe', 'melo', 26, 'melo@.com', '123456789');
+INSERT INTO `persona` (`idPersona`, `Nombre`, `Apellido`, `Edad`, `Correo`, `Contrasena`, `Documento`) VALUES
+(90, 'Ivan', 'Yesid', 2, 'ivann@gmail.com', '12345', 1024895280),
+(99, 'Yesid', 'jose', 23, 'jj@gmail.com', '5678', 1025498720),
+(100, 'juan', 'camilo', 23, 'ivan@gmail.com', '2345', 80549862),
+(101, 'yesid', 'camilo', 23, '2@gmail.com', '12345', 1250078035),
+(103, 'ivan', 'yesid', 286, 'ivan@', 'ivan', 101032190),
+(105, 'fabio', 'andre', 25, 'a@gmail.com', '12345', 95874251),
+(108, 'Ivan', 'Yesid', 2, 'a@gmail.com', '12345', 60995477),
+(109, 'Ivan', 'Yesid', 2, 'aa@gmail.com', '12345', 50248672),
+(110, 'flota flota', 'rodriguez', 25, 'ff@gmail.com', '12345', 1000356210),
+(113, 'felipe', 'melo', 26, 'melo@.com', '123456789', 1025468231);
 
 -- --------------------------------------------------------
 

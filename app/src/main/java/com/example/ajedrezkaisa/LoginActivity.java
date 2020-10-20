@@ -48,10 +48,10 @@ public class LoginActivity extends AppCompatActivity {
         LogoImageView = findViewById(R.id.LogoImageView);
         bienvenidoLabel = findViewById(R.id.bienvenidoLabel);
         continuarLabel = findViewById(R.id.continuarLabel);
-        edtUsuario = findViewById(R.id.edtCorreo);
-        edtPassword= findViewById(R.id.edtPassword);
-        btnLogin = findViewById(R.id.btnIniciarSesion);
-        nuevoUsuario = findViewById(R.id.textNuevoUsuario);
+        edtUsuario = findViewById(R.id.correoTextField);
+        edtPassword= findViewById(R.id.contrasenaTextField);
+        btnLogin = findViewById(R.id.inicioSesion);
+        nuevoUsuario = findViewById(R.id.nuevoUsuario);
 
 
 
