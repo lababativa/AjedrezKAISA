@@ -39,7 +39,7 @@ public class InicioActivity extends AppCompatActivity {
         //Creo instancia de la clase Global
        String email = GlobalUsuario.Correo.toString();
 
-        BuscarSession("http://192.168.0.107/loginMySQL/Buscar_usuario.php?Correo="+email);
+        BuscarSession("http://192.168.1.13/loginMySQL/Buscar_usuario.php?Correo="+email);
 
 
         btnPlay.setOnClickListener(new View.OnClickListener() {

@@ -2,8 +2,11 @@ package com.example.ajedrezkaisa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ActivityOptions;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +33,7 @@ import java.util.Map;
 public class SingUpActivity extends AppCompatActivity {
 
     EditText edtPrimer,edtsegundo,edtEd,edtCorre,edtPass,edtDoc;
+    TextView nuevoUsuario;
     Button btnRegistra;
     boolean aux;
     RequestQueue requestQueue;
@@ -44,6 +48,7 @@ public class SingUpActivity extends AppCompatActivity {
         edtDoc = (EditText)findViewById(R.id.docTextField);
         edtCorre = (EditText)findViewById(R.id.correoTextField);
         edtPass = (EditText)findViewById(R.id.contrasenaTextField);
+        nuevoUsuario = findViewById(R.id.nuevoUsuario);
         //evento Click Boton Registrar
         btnRegistra = (Button)findViewById(R.id.inicioSesion);
         btnRegistra.setOnClickListener(new View.OnClickListener() {
@@ -62,9 +67,19 @@ public class SingUpActivity extends AppCompatActivity {
                         Toast.makeText(SingUpActivity.this, "La contraseña debe contener de 7 a 10 caracteres", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        ejecutarServivio("http://192.168.0.107/LoginMySQL/insertar_persona.php");
+                        ejecutarServivio("http://192.168.1.13/loginMySQL/insertar_persona.php");
                     }
 
+
+            }
+        });
+        nuevoUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SingUpActivity.this, LoginActivity.class);
+
+                    startActivity(intent);
+                    finish();
 
             }
         });

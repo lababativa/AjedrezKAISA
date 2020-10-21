@@ -1,18 +1,20 @@
 <?php
 include 'conexion.php';
-$PrimerNombre=$_POST['PrimerNombre'];
-$SegundoNombre=$_POST['SegundoNombre'];
+$Nombre=$_POST['Nombre'];
+$Apellido=$_POST['Apellido'];
 $Edad=$_POST['Edad'];
 $Correo=$_POST['Correo'];
 $Contrasena=$_POST['Contrasena'];
+$Documento=$_POST['Documento'];
 //RECIBO 
 
 
-//$PrimerNombre="Ivan";
-//$SegundoNombre="Yesid";
+//$Nombre="Ivan";
+//$Apellido="Yesid";
 //$Edad="2";
-//$Correo="aa@gmail.com";
+//$Correo="iyy@gmail.com";
 //$Contrasena="12345";
+//$Documento="1192923921";
 //validamos que el correo no exista
 
 
@@ -27,12 +29,14 @@ if($num > 0){
 	echo "Correo Existente";
 }else{
 	//no existen registros
-	$consulta="insert into persona (PrimerNombre, SegundoNombre, Edad, Correo, Contrasena) values('".$PrimerNombre."','".$SegundoNombre."','".$Edad."','".$Correo."','".$Contrasena."')"; 
+	$consulta="insert into persona (Nombre, Apellido, Edad, Correo, Contrasena,Documento) values('".$Nombre."','".$Apellido."','".$Edad."','".$Correo."','".$Contrasena."','".$Documento."')"; 
 		mysqli_query($conexion,$consulta) or die (mysqli_error()); 
 		mysqli_close($conexion);	
 }
 
 
 ?>
+
+
 
 

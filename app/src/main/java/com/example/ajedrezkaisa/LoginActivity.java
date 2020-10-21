@@ -1,39 +1,39 @@
 package com.example.ajedrezkaisa;
 
-import androidx.appcompat.app.AppCompatActivity;
+        import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActivityOptions;
-import android.content.Intent;
-import android.os.Build;
-import android.os.Bundle;
-import android.util.Log;
-import android.util.Pair;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
+        import android.app.ActivityOptions;
+        import android.content.Intent;
+        import android.os.Build;
+        import android.os.Bundle;
+        import android.util.Log;
+        import android.util.Pair;
+        import android.view.View;
+        import android.widget.Button;
+        import android.widget.EditText;
+        import android.widget.ImageView;
+        import android.widget.TextView;
+        import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.textfield.TextInputLayout;
+        import com.android.volley.AuthFailureError;
+        import com.android.volley.Request;
+        import com.android.volley.RequestQueue;
+        import com.android.volley.Response;
+        import com.android.volley.VolleyError;
+        import com.android.volley.toolbox.StringRequest;
+        import com.android.volley.toolbox.Volley;
+        import com.google.android.material.button.MaterialButton;
+        import com.google.android.material.textfield.TextInputLayout;
 
-import java.util.HashMap;
-import java.util.Map;
+        import java.util.HashMap;
+        import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
 
 
 
-    TextView bienvenidoLabel, continuarLabel, nuevoUsuario;
+    TextView bienvenidoLabel, continuarLabel, nuevoUsuario, recordarcontra;
     ImageView LogoImageView;
 
     EditText edtUsuario,edtPassword;
@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
         edtPassword= findViewById(R.id.contrasenaTextField);
         btnLogin = findViewById(R.id.inicioSesion);
         nuevoUsuario = findViewById(R.id.nuevoUsuario);
-
+        recordarcontra = findViewById(R.id.OlvidasteContra);
 
 
         nuevoUsuario.setOnClickListener(new View.OnClickListener() {
@@ -85,15 +85,22 @@ public class LoginActivity extends AppCompatActivity {
                 if(!usuario.isEmpty() && !password.isEmpty()) {
 
 
-                    ValidarUsuario("http://192.168.0.107/loginMySQL/validar_usuario.php");
+                    ValidarUsuario("http://192.168.1.13/loginMySQL/validar_usuario.php");
                 }else{
-                   Toast.makeText(LoginActivity.this, "No se permiten campos vacios", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "No se permiten campos vacios", Toast.LENGTH_SHORT).show();
                 }
             }
 
         });
 
-
+        recordarcontra.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void  onClick(View one){
+                Intent redirecIntent = new Intent(LoginActivity.this, rememberActivity.class);
+                startActivity(redirecIntent);
+                finish();
+            }
+        });
     }
 
     private void ValidarUsuario(String URL){
