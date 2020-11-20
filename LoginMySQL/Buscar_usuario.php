@@ -9,7 +9,6 @@ $resultado = $conexion-> query($sql);
 //recorrer todos los datos de la consulta
 
 
-
 while ($fila = $resultado ->fetch_array()) {
 
 	$datos[]= array_map('utf8_encode', $fila);
@@ -17,7 +16,6 @@ while ($fila = $resultado ->fetch_array()) {
 //arrglo a formato json
 echo json_encode($datos);
 $resultado -> close();
- 
 
 
 

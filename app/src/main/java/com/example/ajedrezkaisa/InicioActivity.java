@@ -29,13 +29,15 @@ import java.util.Map;
 public class InicioActivity extends AppCompatActivity {
 
     TextView lbNombre;
-    Button btnPlay;
+    Button btnPlay, btnPerfil, btnNosotros;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_inicio);
         btnPlay = findViewById(R.id.btnPlay);
+        btnPerfil = findViewById(R.id.btnPerfil);
+        btnNosotros = findViewById(R.id.btnNosotros);
         //Creo instancia de la clase Global
        String email = GlobalUsuario.Correo.toString();
 
@@ -46,6 +48,22 @@ public class InicioActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent (getApplicationContext(), Juego_Activity.class);
+                startActivityForResult(intent, 0);
+            }
+
+        });
+        btnPerfil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), PerfilActivity.class);
+                startActivityForResult(intent, 0);
+            }
+
+        });
+        btnNosotros.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent (getApplicationContext(), Nosotros.class);
                 startActivityForResult(intent, 0);
             }
 

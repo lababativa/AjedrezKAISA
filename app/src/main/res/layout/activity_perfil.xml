@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PerfilActivity"
+    android:padding="10dp"
+    android:orientation="vertical">
+    <include layout="@layout/activity_master"></include>
+
+
+    <TextView
+        android:id="@+id/bienvenidoLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="BIENVENIDO A SU PERFIL"
+        android:layout_marginTop="5dp"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:transitionName="textTrans"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/subDoc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Número de Documento"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:transitionName="textTrans"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/docTextField"
+            android:fontFamily="sans-serif"
+            android:textSize="20sp"
+            android:textStyle="normal"
+            android:transitionName="textTrans"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.302"
+            />
+        <TextView
+            android:id="@+id/subNom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Nombre"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:transitionName="textTrans"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nameTextField"
+            android:hint="Nombre "
+            android:fontFamily="sans-serif"/>
+        <TextView
+            android:id="@+id/subApell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Apellido"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:transitionName="textTrans"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/lastnameTextField"
+            android:hint="Apellidos "
+            android:fontFamily="sans-serif"/>
+        <TextView
+            android:id="@+id/subCorreo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Correo Electronico"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:transitionName="textTrans"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/correoTextField"
+            android:hint="Correo Electronico"
+            android:fontFamily="sans-serif"/>
+        <TextView
+            android:id="@+id/subEdad"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Edad"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            android:transitionName="textTrans"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edad"
+            android:hint="Edad"
+            android:fontFamily="sans-serif"/>
+        <TextView
+            android:id="@+id/cambioContraLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Actualizar contraseña"
+            android:layout_marginTop="5dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:transitionName="textTrans"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/contrasenaTextField"
+            android:hint="Contraseña actual"
+            android:transitionName="passwordInputTextTrans"
+            app:passwordToggleEnabled="true"
+            android:fontFamily="sans-serif"
+            android:inputType="textPassword"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/confirmarcontrasenaTextField"
+            android:hint="Contraseña nueva"
+            android:transitionName="passwordInputTextTrans"
+            app:passwordToggleEnabled="true"
+            android:fontFamily="sans-serif"
+            android:inputType="textPassword"/>
+        <TextView
+            android:id="@+id/cambioContra"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textSize="20dp"
+            android:textColor="@android:color/darker_gray"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:textStyle="bold"
+            android:text="Cambiar Contraseña"
+            android:transitionName="newUserTrans"/>
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/guardarCambio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="20dp"
+            android:text="Guardar Cambios"
+            android:transitionName="buttonSignInTrans"/>
+
+
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

@@ -13,7 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".rememberActivity"></activity>
+        <activity android:name=".Nosotros"></activity>
+        <activity android:name=".PerfilActivity" />
+        <activity android:name=".rememberActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
